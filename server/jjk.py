@@ -62,6 +62,8 @@ def get_user_bookings(plate_number):
         
     if len(matching_bookings)==0:
         print("No booking available for",plate_number.upper())
+        time.sleep(3)
+
         
     matching_bookings=sorted(matching_bookings, key=lambda x:x['entry_time'])
 
@@ -154,6 +156,7 @@ def recognize_plate():
                         break
                     elif booking['entry_time']>datetime.now(timezone.utc):
                         print("Booking is available, but you are early. Your booking starts at:", booking['entry_time'].strftime('%Y-%m-%d %H:%M:%S'))
+                        time.sleep(3)
                         break
                         
             # Draw the bounding box and plate number on the original frame
